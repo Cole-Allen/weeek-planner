@@ -24,22 +24,26 @@ $addEntryForm.addEventListener('submit', function (event) {
   $addEntryModal.classList.add('hidden');
 });
 
-// function domTree(entry) {
-//   var $tr = document.createElement('tr');
-//   var $td1 = document.createElement('td');
-//   var $td2 = document.createElement('td');
-//   var $span = document.createElement('span');
-//   var $updateButton = document.createElement('button');
-//   var $deleteButton = document.createElement('button');
+function domTree(entry) {
+  var $tr = document.createElement('tr');
+  var $td1 = document.createElement('td');
+  var $td2 = document.createElement('td');
+  var $span = document.createElement('span');
+  var $updateButton = document.createElement('button');
+  $updateButton.textContent = 'update';
+  var $deleteButton = document.createElement('button');
+  $deleteButton.textContent = 'delete';
 
-//   $tr.appendChild($td1);
-//   $tr.appendChild($td2);
-//   $td2.appendChild($span);
-//   $span.appendChild($updateButton);
-//   $span.appendChild($deleteButton);
+  console.log($td2);
 
-//   $td1.textContent = entry.time;
-//   $td2.textContent = entry.desc;
+  $td1.textContent = entry.time;
+  $td2.textContent = entry.desc;
 
-//   return $tr;
-// }
+  $tr.appendChild($td1);
+  $tr.appendChild($td2);
+  $span.appendChild($updateButton);
+  $span.appendChild($deleteButton);
+  $td2.appendChild($span);
+
+  return $tr;
+}
