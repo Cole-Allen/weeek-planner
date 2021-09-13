@@ -61,3 +61,11 @@ td {
   display: flex;
   justify-content: space-evenly;
 }
+
+.update-delete-buttons {
+  float: right;
+}
+
+.update-delete-buttons button {
+  margin: 0 3px;
+}
