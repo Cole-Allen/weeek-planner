@@ -5,7 +5,16 @@ var $addEntryButton = document.querySelector('.add-entry-button');
 var $addEntryForm = document.querySelector('.add-entry-form');
 var $addEntryModal = document.querySelector('.add-entry');
 var documentForms = document.forms[0];
+var $timeSelect = documentForms.time;
+
+var $table = document.querySelector('.table-container tbody');
 // var $tableBody = document.querySelector('tbody');
+
+window.addEventListener('DOMContentLoaded', function (event) {
+  updatePage(event);
+});
+
+populateTime();
 
 $addEntryButton.addEventListener('click', function (event) {
   $addEntryModal.classList.remove('hidden');
@@ -19,6 +28,7 @@ $addEntryForm.addEventListener('submit', function (event) {
   entry.notes = documentForms.notes.value;
   entry.id = data.NextId;
   data.NextId++;
+  $table.appendChild(domTree(entry));
   data.entries.push(entry);
   $addEntryForm.reset();
   $addEntryModal.classList.add('hidden');
@@ -29,15 +39,14 @@ function domTree(entry) {
   var $td1 = document.createElement('td');
   var $td2 = document.createElement('td');
   var $span = document.createElement('span');
+  $span.classList.add('update-delete-buttons');
   var $updateButton = document.createElement('button');
-  $updateButton.textContent = 'update';
+  $updateButton.textContent = 'Update';
   var $deleteButton = document.createElement('button');
-  $deleteButton.textContent = 'delete';
-
-  console.log($td2);
+  $deleteButton.textContent = 'Delete';
 
   $td1.textContent = entry.time;
-  $td2.textContent = entry.desc;
+  $td2.textContent = entry.notes;
 
   $tr.appendChild($td1);
   $tr.appendChild($td2);
@@ -46,4 +55,19 @@ function domTree(entry) {
   $td2.appendChild($span);
 
   return $tr;
+}
+
+function updatePage(event) {
+  for (var i = 0; data.entries.length; i++) {
+    $table.appendChild(domTree(data.entries[i]));
+  }
+}
+
+function populateTime() {
+  for (var i = 0; i < 23; i++) {
+    var $option = document.createElement('option');
+    $option.setAttribute('value', i);
+    $option.textContent = i;
+    $timeSelect.appendChild($option);
+  }
 }
