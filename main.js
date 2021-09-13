@@ -7,6 +7,7 @@ var $addEntryModal = document.querySelector('.add-entry');
 var documentForms = document.forms[0];
 var documentFormsUpdate = document.forms[1];
 var $timeSelect = documentForms.time;
+var $daysButtons = document.querySelector('.days-buttons');
 
 var $table = document.querySelector('.table-container tbody');
 // var $tableBody = document.querySelector('tbody');
@@ -16,6 +17,15 @@ window.addEventListener('DOMContentLoaded', function (event) {
 });
 
 populateTime();
+
+$daysButtons.addEventListener('click', function (event) {
+  deleteDOM();
+  for (var i = 0; i < data.entries.length; i++) {
+    if (data.entries[i].date === event.target.value) {
+      domTree(data.entries[i]);
+    }
+  }
+});
 
 $addEntryButton.addEventListener('click', function (event) {
   $addEntryModal.classList.remove('hidden');
@@ -37,7 +47,8 @@ $addEntryForm.addEventListener('submit', function (event) {
 
 function domTree(entry) {
   var $tr = document.createElement('tr');
-  $tr.setAttribute('data-entry', entry.id.value);
+  $tr.setAttribute('data-entry', entry.id);
+  $tr.setAttribute('date', entry.date);
   var $td1 = document.createElement('td');
   var $td2 = document.createElement('td');
   var $span = document.createElement('span');
@@ -83,9 +94,15 @@ function editEntry(entry) {
 
 // for (var i = 0; i < data.entries.length; i++){
 //   if(data.entries[i].id.toString() ===
-// }
+// };
 
 var $updateModal = document.querySelector('.update-modal');
 $updateModal.addEventListener('click', function (event) {
   editEntry();
 });
+
+function deleteDOM() {
+  if ($table.firstChild) {
+    $table.removeChild($table.firstChild);
+  }
+}
