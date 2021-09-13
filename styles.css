@@ -3,6 +3,18 @@
   padding: 10px 50px;
 }
 
+.add-entry-button-container {
+  justify-content: center;
+}
+
+.days-buttons {
+  justify-content: space-evenly;
+}
+
+.days-buttons button {
+  padding: 1.75rem;
+}
+
 .modal-container {
   display: flex;
   justify-content: center;

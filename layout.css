@@ -12,17 +12,17 @@ header {
   margin: 0 auto;
 }
 
-.hidden {
-  display: none;
-}
-
 .container {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 .row {
   display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  flex-basis: 100%;
 }
 
 .add-entry-modal {
@@ -37,4 +37,8 @@ header {
 .submit-button-container {
   margin-top: 10px;
   justify-content: right;
+}
+
+.hidden {
+  display: none !important;
 }
