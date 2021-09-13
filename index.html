@@ -4,9 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Week Planner</title>
+  <link rel="stylesheet" href="layout.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <header>
+    <h1>Weekly Planner</h1>
+  </header>
+  <main class="container">
+    <div class="add-entry-button-container">
+      <button class="add-entry-button" name="add-entry-button">Add Entry</button>
+    </div>
+    <div class="modal-container">
+      <form class="add-entry-modal">
+        <h1>Add Entry</h1>
+        <select>
+          <option>Sunday</option>
+          <option>Monday</option>
+          <option>Tuesday</option>
+          <option>Wednesday</option>
+          <option>Thursday</option>
+          <option>Friday</option>
+          <option>Saturday</option>
+        </select>
+        <select>
+          <option>Sunday</option>
+        </select>
+      </form>
+    </div>
+
+
+  </main>
   <script src="main.js"></script>
 </body>
 </html>
