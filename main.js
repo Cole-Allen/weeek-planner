@@ -5,6 +5,7 @@ var $addEntryButton = document.querySelector('.add-entry-button');
 var $addEntryForm = document.querySelector('.add-entry-form');
 var $addEntryModal = document.querySelector('.add-entry');
 var documentForms = document.forms[0];
+var documentFormsUpdate = document.forms[1];
 var $timeSelect = documentForms.time;
 
 var $table = document.querySelector('.table-container tbody');
@@ -36,6 +37,7 @@ $addEntryForm.addEventListener('submit', function (event) {
 
 function domTree(entry) {
   var $tr = document.createElement('tr');
+  $tr.setAttribute('data-entry', entry.id.value);
   var $td1 = document.createElement('td');
   var $td2 = document.createElement('td');
   var $span = document.createElement('span');
@@ -71,3 +73,19 @@ function populateTime() {
     $timeSelect.appendChild($option);
   }
 }
+
+function editEntry(entry) {
+  event.preventDefault();
+  entry.time = documentFormsUpdate.time.value;
+  entry.date = documentFormsUpdate.date.value;
+  entry.notes = documentFormsUpdate.notes.value;
+}
+
+// for (var i = 0; i < data.entries.length; i++){
+//   if(data.entries[i].id.toString() ===
+// }
+
+var $updateModal = document.querySelector('.update-modal');
+$updateModal.addEventListener('click', function (event) {
+  editEntry();
+});
