@@ -25,10 +25,6 @@ header {
   flex-basis: 100%;
 }
 
-.add-entry-modal {
-  text-align: center;
-}
-
 .date-time {
   margin-bottom: 15px;
   margin-right: 15px;

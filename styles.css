@@ -25,11 +25,12 @@
   left: 0;
   right: 0;
   background: rgba(0, 0, 0, 0.219);
+  text-align: center;
 }
 
-.add-entry-modal {
+.entry-modal {
   background: white;
-  padding: 20px;
+  padding: 35px;
 }
 
 .table-container {
@@ -54,4 +55,9 @@ td {
 
 .table-container tbody tr:nth-child(even) {
   background: rgb(200, 200, 200);
+}
+
+.yes-no {
+  display: flex;
+  justify-content: space-evenly;
 }
