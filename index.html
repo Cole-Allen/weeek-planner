@@ -54,20 +54,20 @@
         </tbody>
       </table>
     </div>
-    <div class="modal-container hidden">
-      <form class="entry-modal">
+    <div class="modal-container hidden add-entry">
+      <form class="add-entry-form entry-modal">
         <h1>Add Entry</h1>
         <div class="row">
-          <select class="date-time">
-            <option>Sunday</option>
-            <option>Monday</option>
-            <option>Tuesday</option>
-            <option>Wednesday</option>
-            <option>Thursday</option>
-            <option>Friday</option>
-            <option>Saturday</option>
+          <select class="date-time" name="date">
+            <option value="sunday">Sunday</option>
+            <option value="monday">Monday</option>
+            <option value="tuesday">Tuesday</option>
+            <option value="wednesday">Wednesday</option>
+            <option value="thursday">Thursday</option>
+            <option value="friday">Friday</option>
+            <option value="saturday">Saturday</option>
           </select>
-          <select>
+          <select class="date-time" name="time">
             <option>Time</option>
           </select>
         </div>
@@ -112,6 +112,7 @@
       </div>
     </div>
   </main>
+  <script src="data.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
