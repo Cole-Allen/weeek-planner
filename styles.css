@@ -31,3 +31,27 @@
   background: white;
   padding: 20px;
 }
+
+.table-container {
+  justify-content: center;
+}
+
+.table-container table {
+  width: 90%;
+}
+
+.table-container thead tr {
+  background: rgb(165, 165, 165);
+}
+
+.table-container table,
+th,
+td {
+  padding: 10px;
+  border: 2px solid rgb(0, 0, 0);
+  border-collapse: collapse;
+}
+
+.table-container tbody tr:nth-child(even) {
+  background: rgb(200, 200, 200);
+}

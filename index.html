@@ -24,9 +24,34 @@
       <div class="add-entry-button-container row">
         <button class="add-entry-button" name="add-entry-button">Add Entry</button>
       </div>
-    <div>
+    <div class="table-container row">
+      <h2>Scheduled Events for Monday</h2>
       <table>
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Description</th>
+          </tr>
 
+        </thead>
+        <tbody>
+          <tr>
+            <td>test</td>
+            <td>test</td>
+
+          </tr>
+          <tr>
+            <td>test</td>
+            <td>test</td>
+
+          </tr>
+          <tr>
+            <td>test</td>
+            <td>test</td>
+
+          </tr>
+
+        </tbody>
       </table>
     </div>
     <div class="modal-container hidden">
@@ -48,6 +73,28 @@
         </div>
         <textarea name="notes" id="notes" cols="100" rows="10">
         </textarea>
+        <div class="row submit-button-container">
+          <button type="submit" class="submit-button">Submit</button>
+        </div>
+      </form>
+    </div>
+    <div class="modal-delete-container hidden">
+      <form class="delete-entry-modal">
+        <h1>Delete Entry</h1>
+        <div class="row">
+          <select class="date-time">
+            <option>Sunday</option>
+            <option>Monday</option>
+            <option>Tuesday</option>
+            <option>Wednesday</option>
+            <option>Thursday</option>
+            <option>Friday</option>
+            <option>Saturday</option>
+          </select>
+          <select>
+            <option>Time</option>
+          </select>
+        </div>
         <div class="row submit-button-container">
           <button type="submit" class="submit-button">Submit</button>
         </div>
