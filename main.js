@@ -8,23 +8,18 @@ var documentForms = document.forms[0];
 var documentFormsUpdate = document.forms[1];
 var $timeSelect = documentForms.time;
 var $daysButtons = document.querySelector('.days-buttons');
-
 var $table = document.querySelector('.table-container tbody');
+var $tableTitle = document.querySelector('.table-container h2');
 // var $tableBody = document.querySelector('tbody');
 
 window.addEventListener('DOMContentLoaded', function (event) {
-  updatePage(event);
+  selectDay('sunday');
 });
 
 populateTime();
 
 $daysButtons.addEventListener('click', function (event) {
-  deleteDOM();
-  for (var i = 0; i < data.entries.length; i++) {
-    if (data.entries[i].date === event.target.value) {
-      domTree(data.entries[i]);
-    }
-  }
+  selectDay(event.target.value);
 });
 
 $addEntryButton.addEventListener('click', function (event) {
@@ -71,7 +66,7 @@ function domTree(entry) {
 }
 
 function updatePage(event) {
-  for (var i = 0; data.entries.length; i++) {
+  for (var i = 0; i < data.entries.length; i++) {
     $table.appendChild(domTree(data.entries[i]));
   }
 }
@@ -97,12 +92,36 @@ function editEntry(entry) {
 // };
 
 var $updateModal = document.querySelector('.update-modal');
+
 $updateModal.addEventListener('click', function (event) {
+
+  $updateModal.classList.remove('hidden');
   editEntry();
 });
 
 function deleteDOM() {
-  if ($table.firstChild) {
+  while ($table.firstChild) {
     $table.removeChild($table.firstChild);
   }
+}
+
+function selectDay(day) {
+  deleteDOM();
+  var upperDay = upperCase(day);
+  $tableTitle.textContent = 'Scheduled Events for ' + upperDay;
+  for (var i = 0; i < data.entries.length; i++) {
+    if (data.entries[i].date === day) {
+
+      $table.appendChild(domTree(data.entries[i]));
+    }
+  }
+}
+
+function upperCase(string) {
+  var newString = '';
+  newString += string[0].toUpperCase();
+  for (var i = 1; i < string.length; i++) {
+    newString += string[i];
+  }
+  return newString;
 }
