@@ -50,8 +50,14 @@ function domTree(entry) {
   $span.classList.add('update-delete-buttons');
   var $updateButton = document.createElement('button');
   $updateButton.textContent = 'Update';
+  $updateButton.setAttribute('class', 'update-button');
+  var $updateModal = document.querySelector('.update-modal');
+  $updateButton.addEventListener('click', function (event) {
+    $updateModal.classList.remove('hidden');
+  });
   var $deleteButton = document.createElement('button');
   $deleteButton.textContent = 'Delete';
+  $deleteButton.setAttribute('class', 'delete-button');
 
   $td1.textContent = entry.time;
   $td2.textContent = entry.notes;
@@ -90,14 +96,6 @@ function editEntry(entry) {
 // for (var i = 0; i < data.entries.length; i++){
 //   if(data.entries[i].id.toString() ===
 // };
-
-var $updateModal = document.querySelector('.update-modal');
-
-$updateModal.addEventListener('click', function (event) {
-
-  $updateModal.classList.remove('hidden');
-  editEntry();
-});
 
 function deleteDOM() {
   while ($table.firstChild) {
