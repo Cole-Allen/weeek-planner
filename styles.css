@@ -12,7 +12,8 @@
 }
 
 .days-buttons button {
-  padding: 1.75rem;
+  width: 120px;
+  height: 90px;
 }
 
 .modal-container {

@@ -5,12 +5,11 @@ var $addEntryButton = document.querySelector('.add-entry-button');
 var $addEntryForm = document.querySelector('.add-entry-form');
 var $addEntryModal = document.querySelector('.add-entry');
 var documentForms = document.forms[0];
-var documentFormsUpdate = document.forms[1];
 var $timeSelect = documentForms.time;
 var $daysButtons = document.querySelector('.days-buttons');
 var $table = document.querySelector('.table-container tbody');
 var $tableTitle = document.querySelector('.table-container h2');
-// var $tableBody = document.querySelector('tbody');
+var $tableBody = document.querySelector('tbody');
 
 window.addEventListener('DOMContentLoaded', function (event) {
   selectDay('sunday');
@@ -26,17 +25,28 @@ $addEntryButton.addEventListener('click', function (event) {
   $addEntryModal.classList.remove('hidden');
 });
 
+$tableBody.addEventListener('click', function (event) {
+  for (var i = 0; i < data.entries.length; i++) {
+    if (event.target.parentElement.parentElement.parentElement.getAttribute('data-entry') === data.entries[i].id.toString()) {
+      data.editing = data.entries[i];
+      $addEntryModal.classList.remove('hidden');
+    }
+  }
+
+});
+
 $addEntryForm.addEventListener('submit', function (event) {
   event.preventDefault();
+  console.log(data.editing);
   if (data.editing) {
-    data.editing.time = documentForms.time.value;
     data.editing.notes = documentForms.notes.value;
+    data.editing.time = documentForms.time.value;
     data.editing.date = documentForms.date.value;
-    console.log(data.editing);
     deleteDOM();
     selectDay('sunday');
     $addEntryForm.reset();
     $addEntryModal.classList.add('hidden');
+    updatePage();
   } else {
     var entry = {};
     entry.date = documentForms.date.value;
@@ -59,13 +69,11 @@ function domTree(entry) {
   var $td2 = document.createElement('td');
   var $span = document.createElement('span');
   $span.classList.add('update-delete-buttons');
+
   var $updateButton = document.createElement('button');
   $updateButton.textContent = 'Update';
   $updateButton.setAttribute('class', 'update-button');
-  $updateButton.addEventListener('click', function (event) {
-    $addEntryModal.classList.remove('hidden');
-    documentForms.querySelector('h1').textContent = 'Update Entry';
-  });
+
   var $deleteButton = document.createElement('button');
   $deleteButton.textContent = 'Delete';
   $deleteButton.setAttribute('class', 'delete-button');
@@ -97,17 +105,6 @@ function populateTime() {
   }
 }
 
-function editEntry(entry) {
-  event.preventDefault();
-  entry.time = documentFormsUpdate.time.value;
-  entry.date = documentFormsUpdate.date.value;
-  entry.notes = documentFormsUpdate.notes.value;
-}
-
-// for (var i = 0; i < data.entries.length; i++){
-//   if(data.entries[i].id.toString() ===
-// };
-
 function deleteDOM() {
   while ($table.firstChild) {
     $table.removeChild($table.firstChild);
@@ -133,4 +130,7 @@ function upperCase(string) {
     newString += string[i];
   }
   return newString;
+}
+
+function populateForm(entry) {
 }
