@@ -29,7 +29,14 @@ $addEntryButton.addEventListener('click', function (event) {
 $addEntryForm.addEventListener('submit', function (event) {
   event.preventDefault();
   if (data.editing) {
-
+    data.editing.time = documentForms.time.value;
+    data.editing.notes = documentForms.notes.value;
+    data.editing.date = documentForms.date.value;
+    console.log(data.editing);
+    deleteDOM();
+    selectDay('sunday');
+    $addEntryForm.reset();
+    $addEntryModal.classList.add('hidden');
   } else {
     var entry = {};
     entry.date = documentForms.date.value;
@@ -55,7 +62,6 @@ function domTree(entry) {
   var $updateButton = document.createElement('button');
   $updateButton.textContent = 'Update';
   $updateButton.setAttribute('class', 'update-button');
-  var $updateModal = document.querySelector('.update-modal');
   $updateButton.addEventListener('click', function (event) {
     $addEntryModal.classList.remove('hidden');
     documentForms.querySelector('h1').textContent = 'Update Entry';
