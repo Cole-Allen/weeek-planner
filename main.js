@@ -28,16 +28,20 @@ $addEntryButton.addEventListener('click', function (event) {
 
 $addEntryForm.addEventListener('submit', function (event) {
   event.preventDefault();
-  var entry = {};
-  entry.date = documentForms.date.value;
-  entry.time = documentForms.time.value;
-  entry.notes = documentForms.notes.value;
-  entry.id = data.NextId;
-  data.NextId++;
-  $table.appendChild(domTree(entry));
-  data.entries.push(entry);
-  $addEntryForm.reset();
-  $addEntryModal.classList.add('hidden');
+  if (data.editing) {
+
+  } else {
+    var entry = {};
+    entry.date = documentForms.date.value;
+    entry.time = documentForms.time.value;
+    entry.notes = documentForms.notes.value;
+    entry.id = data.NextId;
+    data.NextId++;
+    $table.appendChild(domTree(entry));
+    data.entries.push(entry);
+    $addEntryForm.reset();
+    $addEntryModal.classList.add('hidden');
+  }
 });
 
 function domTree(entry) {
@@ -53,7 +57,8 @@ function domTree(entry) {
   $updateButton.setAttribute('class', 'update-button');
   var $updateModal = document.querySelector('.update-modal');
   $updateButton.addEventListener('click', function (event) {
-    $updateModal.classList.remove('hidden');
+    $addEntryModal.classList.remove('hidden');
+    documentForms.querySelector('h1').textContent = 'Update Entry';
   });
   var $deleteButton = document.createElement('button');
   $deleteButton.textContent = 'Delete';

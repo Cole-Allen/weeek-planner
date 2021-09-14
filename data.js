@@ -1,7 +1,8 @@
 /* exported data */
 var data = {
   NextId: 1,
-  entries: []
+  entries: [],
+  editing: null
 };
 
 var previousData = localStorage.getItem('entries.data');
